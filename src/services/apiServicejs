@@ -1,0 +1,57 @@
+import axios from "axios";
+
+const BASE_URL = "https://react-test.aventusinformatics.com/api"; // Your API base URL
+
+// Create an Axios instance with default configuration
+const apiClient = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Request Interceptor (Optional: Add authentication if required)
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response Interceptor (Global error handling)
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error("API Error:", error.response || error.message);
+    return Promise.reject(error);
+  }
+);
+
+/**
+ * Common function to handle API requests
+ * @param {String} method - HTTP method (GET, POST, PUT, DELETE, etc.)
+ * @param {String} url - API endpoint (relative to BASE_URL)
+ * @param {Object} [data] - Request body data (for POST, PUT, etc.)
+ * @param {Object} [params] - URL parameters (for GET, DELETE)
+ * @returns {Promise} - Returns the response or error
+ */
+export const apiCall = async (method, url, data = null, params = null) => {
+  try {
+    const response = await apiClient({
+      method,
+      url,
+      data,
+      params,
+    });
+    return response.data;
+  } catch (error) {
+    throw error; // Re-throwing error for useApi to handle
+  }
+};
+
+// Export the Axios instance for direct usage if needed
+export default apiClient;

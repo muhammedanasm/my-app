@@ -1,0 +1,51 @@
+.youtube-sidebar {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  height: 100vh;
+  color: #fff;
+  height: 100%;
+  padding: 30px 20px;
+  border-right: 1px solid #15151569;
+  width: 240px; /* Expanded width */
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+.logo img {
+  max-width: 90px;
+}
+.youtube-sidebar.collapsed {
+  width: 72px; /* Collapsed width */
+}
+.navlink-2:hover {
+  background-color: #272727;
+}
+.youtube-sidebar.collapsed .nav1 p {
+  display: none;
+}
+.navlink-2 {
+  padding-bottom: 0px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease-in-out;
+  margin-bottom: 5px;
+}
+.navlink-inner {
+  cursor: pointer;
+  padding: 8px 8px;
+  padding-right: 0px;
+  font-size: 16px;
+}
+.navlink-inner:hover {
+  background-color: #272727;
+}
+.nav1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}

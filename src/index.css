@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+:root {
+  --font-family-primary: "Roboto", serif;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background: #0f0f0f;
+}
